@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const moment = require('moment')
 
 const TodoSchema = new mongoose.Schema({
   todo: {
@@ -13,7 +14,7 @@ const TodoSchema = new mongoose.Schema({
     type: Date,
     required: false,
     default: Date.now,
-    get: (date)=> date.toLocaleDateString(),
+    get: (date)=> moment.utc(date).format('M-DD-YYYY'),
   },
   // date: {
   //   type: String,

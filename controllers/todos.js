@@ -7,7 +7,6 @@ module.exports = {
         try{
             const todoItems = await Todo.find({userId:req.user.id}).sort({completed:1}).sort({
                 date: 1,})
-            // const todoItems = await Todo.find({userId:req.user.id})
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
             res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
         }catch(err){
@@ -20,12 +19,9 @@ module.exports = {
         try{
             const setDate = moment(req.body.findTask).format("YYYY-MM-DD").toString()
             console.log(setDate)
-            // const todoItems = await Todo.find({userId:req.user.id}).find({date: {$gte: new Date(moment(req.body.findTask).format("YYYY-MM-DD") + 'T04:00:00.000+00:00'), $lte: new Date(moment(req.body.findTask).format("YYYY-MM-DD") + 'T04:00:00.000+00:00')}})
-            const todoItems = await Todo.find({userId:req.user.id}).find({date: {$gte: new Date(moment(req.body.findTask).subtract(moment(req.body.findTask).utcOffset(), 'minutes').utc()), $lte: new Date(moment(req.body.findTask).subtract(moment(req.body.findTask).utcOffset(), 'minutes').utc())}})
+            const todoItems = await Todo.find({userId:req.user.id}).find({date: {$gte: new Date(req.body.findTask), $lte: new Date(req.body.findTask)}})
             console.log(new Date(moment(req.body.findTask).subtract(moment(req.body.findTask).utcOffset(), 'minutes').utc()))
             console.log(req.body.findTask)
-            // const findItems = await Todo.find({userId:req.user.id}).sort({completed:1}).sort({
-            //     date: 1,})
             const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
             res.render('todos.ejs', {todos: todoItems, left: itemsLeft, user: req.user})
         }catch(err){
@@ -36,9 +32,7 @@ module.exports = {
 
     createTodo: async (req, res)=>{
         try{
-            // await Todo.create({todo: req.body.todoItem, completed: false, date: new Date(moment(req.body.toDoDate).format('YYYY-MM-DD').replace(/-/g, '\/').replace(/T.+/, '')), userId: req.user.id, email: req.user.email})
-            await Todo.create({todo: req.body.todoItem, completed: false, date: new Date(moment(req.body.toDoDate).subtract(moment(req.body.toDoDate).utcOffset(), 'minutes').utc()), userId: req.user.id, email: req.user.email})
-            // console.log(new Date(moment(req.body.toDoDate).subtract(moment(req.body.toDoDate).utcOffset(), 'minutes').utc()))
+            await Todo.create({todo: req.body.todoItem, completed: false, date: new Date(req.body.toDoDate), userId: req.user.id, email: req.user.email})
             console.log('Todo has been added!')
             res.redirect('/todos')
         }catch(err){
