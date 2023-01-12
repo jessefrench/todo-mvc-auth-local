@@ -12,6 +12,7 @@ const todoRoutes = require('./routes/todos')
 const cron = require('node-cron')
 const Todo = require('./models/Todo')
 const mailing = require('./nodemailer')
+const port = process.env.PORT || 2121
 
 require('dotenv').config({path: './config/.env'})
 
@@ -25,6 +26,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
+
 // Sessions
 app.use(
     session({
@@ -45,7 +47,6 @@ app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
 
 // Scheduler
-
 cron.schedule('0 0 0 * * *', () => {
   Todo.find({}, function(err, todos) {
 
@@ -60,7 +61,9 @@ cron.schedule('0 0 0 * * *', () => {
     });
   });
 })
- 
-app.listen(process.env.PORT, ()=>{
-    console.log('Server is running, you better catch it!')
-})    
+
+connectDB().then(() => {
+	app.listen(port, () => {
+		console.log(`Server is running. Listening on port ${port}.`)
+	})
+})

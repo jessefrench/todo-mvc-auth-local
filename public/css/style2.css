@@ -164,3 +164,7 @@ a {
 .draggable.dragging {
   opacity: .5;
 }
+
+.input-date {
+  width: 175px;
+}
