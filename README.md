@@ -1,10 +1,5 @@
-
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
 
 A full-stack app built with MVC Architecture and authentication. This is our rendition of a simple to-do app. 
 
@@ -12,6 +7,7 @@ A full-stack app built with MVC Architecture and authentication. This is our ren
 
 * [![Node][Node.js]][Node-url]
 * [![Express][Express.js]][Express-url]
+* [![EJS][EJS]][EJS-url]
 * [![MongoDB][MongoDB]][MongoDB-url]
 
 ## Features
@@ -68,23 +64,14 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
 
 
 
-
-
-
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[Node.js]: https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Node.js]: https://img.shields.io/badge/Node.js-233056?style=flat&logo=nodedotjs&logoColor=339933
 [Node-url]: https://nodejs.org/en/
-[Express.js]: https://img.shields.io/badge/Express-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[Express.js]: https://img.shields.io/badge/Express-eeeeee?style=flat&logo=express&logoColor=000000
 [Express-url]: https://expressjs.com
-[MongoDB]: https://img.shields.io/badge/MongoDB-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[MongoDB]: https://img.shields.io/badge/MongoDB-023430?style=flat&logo=mongodb&logoColor=00ed64
 [MongoDB-url]: https://www.mongodb.com
-
-
-
-
-
+[EJS]: https://img.shields.io/badge/-EJS-%238f3d3d?style=flat&logo=javascript&logoColor=ffffff
+[EJS-url]: https://ejs.co
